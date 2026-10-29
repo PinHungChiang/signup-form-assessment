@@ -158,7 +158,7 @@ export default function SignUpScreen() {
 
             <Pressable
               style={[styles.button, isSubmitting && styles.buttonDisabled]}
-              onPress={handleSubmit(onSubmit)}
+              onPress={() => { void handleSubmit(onSubmit)(); }}
               disabled={isSubmitting}
               accessibilityRole="button"
             >

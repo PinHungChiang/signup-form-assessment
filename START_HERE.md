@@ -1,20 +1,35 @@
-# Expo initialization only
+# Setup
 
-This is the official Expo SDK 58 default template, reset using its own reset-project command. No assessment form, validation schema, submit handler, or confirmation screen has been implemented.
+Open a terminal in the project folder and run:
 
-## Mac setup
-Install Node.js 24 LTS if needed. Extract the ZIP, open a terminal in signup-assessment-starter, then run:
+```bash
+npm ci
+npm start
+```
 
-    npm ci
-    npm start
+Press `w` to open the web version. For a phone, use an Expo Go version compatible with this project's Expo SDK.
 
-Press w for the browser, or scan the QR code using a compatible Expo Go installation on the same network.
+## Project files
 
-Entry screen: src/app/index.tsx. Router layout: src/app/_layout.tsx.
+- `src/app/index.tsx`: entry screen
+- `src/app/_layout.tsx`: Expo Router layout
+- `package.json`: dependencies and commands
 
-Installed: TypeScript, Expo Router, react-hook-form, zod, @hookform/resolvers. Import zodResolver from @hookform/resolvers/zod; it is not a separate package.
+TypeScript, Expo Router, react-hook-form, Zod, and @hookform/resolvers are included. Import `zodResolver` from `@hookform/resolvers/zod`.
 
-## Verification
-TypeScript and direct ESLint checks passed. Web bundle export passed. Native phone execution was not tested. Online Expo dependency validation timed out; offline validation reported dependencies up to date. Expo lint wrapper incorrectly rejected installed ESLint 9, so npm run lint uses ESLint directly.
+## Checks
 
-This starter is tracked in GitHub. No D2L submission has been made. The ZIP excludes dependencies, generated output, and Git history. This starter is not a completed assessment or end-of-class submitted attempt. Record AI assistance as required by the assessment and attach your complete prompt/response history in ai-usage.docx.
+```bash
+npm run typecheck
+npm run lint
+```
+
+Both checks passed for the starter. Phone testing has not been completed.
+
+## Current status
+
+Only project setup is complete. The sign-up form, validation schema, submit handler, and confirmation screen still need to be implemented. Uploading this starter to GitHub does not complete the assessment or the D2L submission.
+
+## AI assistance
+
+AI helped prepare and check this starter and upload it to GitHub. Follow the instructor's AI-use rules and retain the assistance history. Confirm whether this assessment requires an `ai-usage.docx` attachment.

@@ -5,6 +5,8 @@ async function run() {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   const consoleMessages = [];
+  const runtimeErrors = [];
+  page.on('pageerror', (error) => runtimeErrors.push(error.message));
 
   page.on('console', (message) => consoleMessages.push(message.text()));
 
@@ -15,9 +17,13 @@ async function run() {
     });
 
     await page.getByText('Create an account', { exact: true }).waitFor();
+    await page.waitForLoadState('networkidle');
 
     // Empty form should show the error for each required field.
     await page.getByRole('button', { name: 'Sign up' }).click();
+    await page.waitForTimeout(600);
+    console.log('After empty submit:', (await page.locator('body').innerText()).slice(0, 1600));
+    console.log('Runtime errors:', runtimeErrors, 'Console:', consoleMessages.slice(-12));
     for (const message of [
       'Please enter at least 2 characters.',
       'Please enter a valid email address.',

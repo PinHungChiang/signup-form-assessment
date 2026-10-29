@@ -23,3 +23,26 @@ jobs:
         run: npm run lint
       - name: Build web version
         run: CI=1 npx expo export --platform web
+      - name: Install browser test tools
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Check form in a browser
+        run: |
+          set -e
+          CI=1 npx expo start --web --port 8081 > "$RUNNER_TEMP/expo-web.log" 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          READY=0
+          for i in $(seq 1 90); do
+            if curl --silent --fail http://localhost:8081/ -o /dev/null; then
+              READY=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "$READY" -ne 1 ]; then
+            cat "$RUNNER_TEMP/expo-web.log"
+            exit 1
+          fi
+          node scripts/smoke-test.cjs

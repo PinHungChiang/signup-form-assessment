@@ -11,11 +11,10 @@ Press `w` to open the web version. For a phone, use an Expo Go version compatibl
 
 ## Project files
 
-- `src/app/index.tsx`: entry screen
-- `src/app/_layout.tsx`: Expo Router layout
+- `src/app/index.tsx`: sign-up form and Zod validation
+- `src/app/confirmation.tsx`: confirmation screen
+- `src/app/_layout.tsx`: Expo Router stack
 - `package.json`: dependencies and commands
-
-TypeScript, Expo Router, react-hook-form, Zod, and @hookform/resolvers are included. Import `zodResolver` from `@hookform/resolvers/zod`.
 
 ## Checks
 
@@ -24,12 +23,12 @@ npm run typecheck
 npm run lint
 ```
 
-Both checks passed for the starter. Phone testing has not been completed.
+The form and navigation have been implemented. A TypeScript syntax check passed, but dependencies were not available in this environment to run the full lint/typecheck or test the app on a phone.
 
-## Current status
+## Submission
 
-Only project setup is complete. The sign-up form, validation schema, submit handler, and confirmation screen still need to be implemented. Uploading this starter to GitHub does not complete the assessment or the D2L submission.
+The current code is in the GitHub `main` branch. D2L submission is a separate step.
 
 ## AI assistance
 
-AI helped prepare and check this starter and upload it to GitHub. Follow the instructor's AI-use rules and retain the assistance history. Confirm whether this assessment requires an `ai-usage.docx` attachment.
+AI helped prepare the project and some code. Follow the instructor's rules for documenting any assistance.

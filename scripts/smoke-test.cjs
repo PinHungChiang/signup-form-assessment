@@ -54,7 +54,7 @@ async function run() {
     assert.equal(consoleMessages.some((line) => line.includes('password123')), false);
 
     await page.getByRole('button', { name: 'Back to form' }).click();
-    await page.getByText('Create an account', { exact: true }).waitFor();
+    await page.getByRole('button', { name: 'Sign up' }).waitFor();
 
     console.log('Form smoke test passed: errors, valid submission, and navigation.');
   } finally {
